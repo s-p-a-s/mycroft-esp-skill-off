@@ -63,12 +63,12 @@ class TodayHistorySkill(MycroftSkill):
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
     def handle_random_event_intent(self, message):
-        url = 'http://history.muffinlabs.com/date'
+        url = 'https://10.106.0.225/gpio/1'
         r = requests.get(url)
         json_output = r.json()
         output = json_output['data']
         events = output['Events']
-        self.speak("Today in deni deni deni event {} occurred.".format(events[0]['text']))
+        self.speak("The website replied with {} .".format(r))
 
 
     # The "stop" method defines what Mycroft does when told to stop during
