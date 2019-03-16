@@ -64,7 +64,7 @@ class TodayHistorySkill(MycroftSkill):
     # the method is called.
     def handle_random_event_intent(self, message):
         #url = 'https://10.106.0.225/gpio/1'
-        #url = 'http://history.muffinlabs.com/date'
+        url = 'http://history.muffinlabs.com/date'
         r = requests.get(url)
         json_output = r.json()
         output = json_output['data']
