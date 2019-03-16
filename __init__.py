@@ -53,7 +53,7 @@ class TodayHistorySkill(MycroftSkill):
 
   
     def handle_random_event_intent(self, message):
-        url = 'https://10.106.0.225/gpio/1'
+        url = 'https://10.106.0.225/gpio/0'
         r = urllib.request.urlopen("https://10.106.0.225/gpio/1", context=ssl.SSLContext()).read()
         self.speak("As you wish") 
 
