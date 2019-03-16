@@ -29,7 +29,8 @@ from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
 import requests
-
+import urllib.request
+import ssl
 __author__ = 'brihopki'
 
 # Logger: used for debug lines, like "LOGGER.debug(xyz)". These
@@ -64,12 +65,14 @@ class TodayHistorySkill(MycroftSkill):
     # the method is called.
     def handle_random_event_intent(self, message):
         #url = 'https://10.106.0.225/gpio/1'
-        url = 'http://history.muffinlabs.com/date'
-        r = requests.get(url)
+        #url = 'http://history.muffinlabs.com/date'
+       # r = requests.get(url)
+         r = urllib.request.urlopen("https://10.106.0.225/gpio/1", context=ssl.SSLContext()).read()
         json_output = r.json()
         output = json_output['data']
         events = output['Events']
-        self.speak("The website replied with {} ".format(events[0]['text'])) #occurred.".format(events[0]['text'])
+       #self.speak("The website replied with {} ".format(events[0]['text'])) #occurred.".format(events[0]['text'])
+        self.speak("The website replied with done") #occurred.".format(events[0]['text'])
 
 
     # The "stop" method defines what Mycroft does when told to stop during
