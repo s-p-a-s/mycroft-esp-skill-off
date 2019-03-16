@@ -33,21 +33,15 @@ import urllib.request
 import ssl
 __author__ = 'brihopki'
 
-# Logger: used for debug lines, like "LOGGER.debug(xyz)". These
-# statements will show up in the command line when running Mycroft.
+
 LOGGER = getLogger(__name__)
 
-# The logic of each skill is contained within its own class, which inherits
-# base methods from the MycroftSkill class with the syntax you can see below:
-# "class ____Skill(MycroftSkill)"
+
 class TodayHistorySkill(MycroftSkill):
 
-    # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
         super(TodayHistorySkill, self).__init__(name="TodayHistorySkill")
 
-    # This method loads the files needed for the skill's functioning, and
-    # creates and registers each intent that the skill uses
     def initialize(self):
         self.load_data_files(dirname(__file__))
 
@@ -60,14 +54,13 @@ class TodayHistorySkill(MycroftSkill):
   
     def handle_random_event_intent(self, message):
         url = 'https://10.106.0.225/gpio/1'
-        #url = 'http://history.muffinlabs.com/date'
-        #r = requests.get(url)
+      
         r = urllib.request.urlopen("https://10.106.0.225/gpio/1", context=ssl.SSLContext()).read()
         #json_output = r.json()
         #output = json_output['data']
        # events = output['Events']
        #self.speak("The website replied with {} ".format(events[0]['text'])) #occurred.".format(events[0]['text'])
-        self.speak("The website replied with done") #occurred.".format(events[0]['text'])
+        self.speak_dialog("ok") 
 
 
     def stop(self):
