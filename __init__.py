@@ -57,17 +57,12 @@ class TodayHistorySkill(MycroftSkill):
 
 
 
-    # The "handle_xxxx_intent" functions define Mycroft's behavior when
-    # each of the skill's intents is triggered: in this case, he simply
-    # speaks a response. Note that the "speak_dialog" method doesn't
-    # actually speak the text it's passed--instead, that text is the filename
-    # of a file in the dialog folder, and Mycroft speaks its contents when
-    # the method is called.
+  
     def handle_random_event_intent(self, message):
         #url = 'https://10.106.0.225/gpio/1'
-        #url = 'http://history.muffinlabs.com/date'
-       # r = requests.get(url)
-         r = urllib.request.urlopen("https://10.106.0.225/gpio/1", context=ssl.SSLContext()).read()
+        url = 'http://history.muffinlabs.com/date'
+        r = requests.get(url)
+        # r = urllib.request.urlopen("https://10.106.0.225/gpio/1", context=ssl.SSLContext()).read()
         json_output = r.json()
         output = json_output['data']
         events = output['Events']
@@ -75,10 +70,6 @@ class TodayHistorySkill(MycroftSkill):
         self.speak("The website replied with done") #occurred.".format(events[0]['text'])
 
 
-    # The "stop" method defines what Mycroft does when told to stop during
-    # the skill's execution. In this case, since the skill's functionality
-    # is extremely simple, the method just contains the keyword "pass", which
-    # does nothing.
     def stop(self):
         pass
 
