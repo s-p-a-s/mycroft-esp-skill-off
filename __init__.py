@@ -62,10 +62,10 @@ class TodayHistorySkill(MycroftSkill):
         url = 'https://10.106.0.225/gpio/1'
         #url = 'http://history.muffinlabs.com/date'
         #r = requests.get(url)
-        # r = urllib.request.urlopen("https://10.106.0.225/gpio/1", context=ssl.SSLContext()).read()
-        json_output = r.json()
-        output = json_output['data']
-        events = output['Events']
+        r = urllib.request.urlopen("https://10.106.0.225/gpio/1", context=ssl.SSLContext()).read()
+        #json_output = r.json()
+        #output = json_output['data']
+       # events = output['Events']
        #self.speak("The website replied with {} ".format(events[0]['text'])) #occurred.".format(events[0]['text'])
         self.speak("The website replied with done") #occurred.".format(events[0]['text'])
 
