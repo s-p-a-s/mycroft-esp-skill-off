@@ -68,7 +68,7 @@ class TodayHistorySkill(MycroftSkill):
         json_output = r.json()
         output = json_output['data']
         events = output['Events']
-        self.speak("Today in history event {} occurred.".format(events[0]['text']))
+        self.speak("Today in deni deni deni event {} occurred.".format(events[0]['text']))
 
 
     # The "stop" method defines what Mycroft does when told to stop during
